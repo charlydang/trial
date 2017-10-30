@@ -19,6 +19,9 @@ package cs245.v1.pkg0.pkg1;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
 
 /**
@@ -39,8 +42,8 @@ public class MainFrame extends JFrame {
     private GameOver over = new GameOver(sudokuEngine);
     private HManGame play = new HManGame(engine);
     private ColorGame playColor = new ColorGame(colorEngine, engine);
-    private SudokuGame sudoku = new SudokuGame(sudokuEngine,colorEngine);
-
+    private SudokuGame sudoku = new SudokuGame(sudokuEngine, colorEngine);
+    private JFrame frame;
     private Timer timer;
 
     /*
@@ -146,7 +149,7 @@ public class MainFrame extends JFrame {
         mainP.add(play, "play");
         mainP.add(over, "over");
         mainP.add(playColor, "play2");
-        mainP.add(sudoku,"play3");
+        mainP.add(sudoku, "play3");
 
         mainMenu.setMain(this);
         credit.setMain(this);
@@ -155,7 +158,27 @@ public class MainFrame extends JFrame {
         playColor.setMain(this);
         sudoku.setMain(this);
         over.setMain(this);
-        
+
+        KeyboardFocusManager.getCurrentKeyboardFocusManager()
+                .addKeyEventDispatcher(new KeyEventDispatcher() {
+                    @Override
+                    public boolean dispatchKeyEvent(KeyEvent ke) {
+                       if(ke.getID() == KeyEvent.KEY_PRESSED){
+                        if (ke.getKeyCode() == ke.VK_ESCAPE) {
+                            System.out.println("escaped ?");
+                            //setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); // trying to close
+                            System.exit(0);
+                        } else if (ke.getKeyCode() == ke.VK_F1) {
+                            JOptionPane.showMessageDialog(frame, "Winter Quarter\nCharly Dang 010924537"
+                                    + "\nBrandon Nguyen 011499566\nColin Koo 010291241\nFelix Zhang 01042383"
+                                    + "\nGerianna Geminiano 010662522");
+                            
+                        }
+                       }
+                        return false;
+                    
+                    }
+                });
     }
 
     /*
@@ -185,6 +208,8 @@ public class MainFrame extends JFrame {
         EventQueue.invokeLater(() -> {
             MainFrame menu = new MainFrame();
             menu.setVisible(true);
+
         });
+
     }
 }

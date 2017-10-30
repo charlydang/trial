@@ -47,6 +47,18 @@ public class SudokuGameEngine {
         { 0, 0, 1, 0, 0, 0, 0, 0, 0},
         { 3, 0, 0, 9, 0, 2, 0, 0, 5}};
     
+    // Keeps track of boxes submitted with wrong answers
+     private int[][] wrong = {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {  0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+    
     public SudokuGameEngine() {
         
     }
@@ -84,7 +96,7 @@ public class SudokuGameEngine {
     }
     
        /*
-    method: getScore
+    method: getFinalScore
     puspose: returns score
      */
     public int getFinalScore() {
