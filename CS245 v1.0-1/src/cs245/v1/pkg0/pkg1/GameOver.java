@@ -35,13 +35,12 @@ public class GameOver extends JPanel {
     private JPanel containerPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
     private MainFrame main;
-    private ColorGameEngine engine;
-    private HManGame game;
+    private SudokuGameEngine engine;
 
     /*
     Constructor
      */
-    public GameOver(ColorGameEngine engine) {
+    public GameOver(SudokuGameEngine engine) {
         this.engine = engine;
         setLayout(new BorderLayout());
     }
@@ -99,7 +98,7 @@ public class GameOver extends JPanel {
         namePrompt = new JLabel();
         input = new JTextField(10);
         String scoreText;
-        scoreText = "Woo! You made the High Score! Score: " + Integer.toString(engine.getScore());
+        scoreText = "Woo! You made the High Score! Score: " + Integer.toString(engine.getFinalScore());
         JPanel inputPanel = new JPanel();
 
         JButton yes = new JButton("Yes");
@@ -162,7 +161,7 @@ public class GameOver extends JPanel {
                 if (inputValue.length() == 0) {
                     inputValue = "NONAME";
                 }
-                engine.updateHighScore(inputValue, engine.getScore());
+                engine.updateHighScore(inputValue, engine.getFinalScore());
                 main.swapView("menu");
                 main.updateScore();
             }

@@ -17,14 +17,15 @@ import javax.swing.*;
  *
  */
 public class SudokuGame extends JPanel {
-
+    private ColorGameEngine cEngine; 
     private SudokuGameEngine engine;
     private MainFrame main;
     private JTextField[][] boxes = new JTextField[9][9];
     private JPanel board = new JPanel();
 
-    public SudokuGame(SudokuGameEngine engine) {
+    public SudokuGame(SudokuGameEngine engine,ColorGameEngine cEngine) {
         this.engine = engine;
+        this.cEngine = cEngine;
         setLayout(new BorderLayout());
 
         initBoard();
@@ -111,6 +112,11 @@ public class SudokuGame extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                //add actionlistener actions for submitting
+               // Game Over Score is Sudoku Score + previous games Score
+               engine.setScore(cEngine.getScore()+engine.getFinalScore());
+               System.out.println("Sudoku Score: " + engine.getFinalScore());
+               main.gameOverMessage();
+               main.swapView("over");
             }
             
         });
@@ -134,7 +140,12 @@ public class SudokuGame extends JPanel {
         quit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
- 
+                // If choose to quit then Socuku score is 0
+                // So Ending score is previous games Score
+                engine.setScore(cEngine.getScore());
+                System.out.println("Sudoku Score: " + engine.getFinalScore());
+                main.gameOverMessage();
+                main.swapView("over");
             }
             
         });

@@ -225,12 +225,14 @@ public class ColorGame extends JPanel {
                 // If its initial round first get the score from hangman
                 if (engine.getRounds() == 0) {
                     engine.setScore(hEngine.getScore());
+                    System.out.println("HangmanScore:" + hEngine.getScore());
                 }
                 for (Shape shape : drawCirc) {
                     if (shape.contains(e.getPoint())) {;
                         //System.out.println(color);
                         engine.matches(color);
                         reDraw();
+                        System.out.println("ColorScre:" + engine.getScore());
                     }
                 }
             } else if (engine.getRounds() == 4) {
@@ -238,13 +240,14 @@ public class ColorGame extends JPanel {
                     if (shape.contains(e.getPoint())) {
                         //System.out.println(color);
                         engine.matches(color);
+                        System.out.println("ColorScre:" + engine.getScore());
                         main.gameOverMessage();
-                        main.swapView("over");
+                        main.swapView("play3");
                     }
                 }
             } else {;
                 main.gameOverMessage();
-                main.swapView("over");
+                main.swapView("play3");
             }
         }
            

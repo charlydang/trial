@@ -36,10 +36,10 @@ public class MainFrame extends JFrame {
     private HManGameEngine engine = new HManGameEngine();
     private ColorGameEngine colorEngine = new ColorGameEngine();
     private SudokuGameEngine sudokuEngine = new SudokuGameEngine();
-    private GameOver over = new GameOver(colorEngine);
+    private GameOver over = new GameOver(sudokuEngine);
     private HManGame play = new HManGame(engine);
     private ColorGame playColor = new ColorGame(colorEngine, engine);
-    private SudokuGame sudoku = new SudokuGame(sudokuEngine);
+    private SudokuGame sudoku = new SudokuGame(sudokuEngine,colorEngine);
 
     private Timer timer;
 
