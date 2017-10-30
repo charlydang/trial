@@ -98,6 +98,7 @@ public class MainFrame extends JFrame {
     public void startNewGame() {
         play.startNewGame();
         playColor.startNewGame();
+        sudoku.startNewGame();
     }
 
     /*

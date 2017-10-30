@@ -39,6 +39,16 @@ public class SudokuGame extends JPanel {
         this.main = main;
 
     }
+    
+     /*
+    method: startNewGame
+    purpose: Resets the game.
+     */
+    public void startNewGame() {
+        engine.setScore(540); // reset the score back to 0
+        // NEED TO ADD MORE CODE TO RESET EVERYTHINE ELSE
+        
+    }
 
     /*
     For the sudoku board we are going to use a
