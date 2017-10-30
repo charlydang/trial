@@ -159,24 +159,26 @@ public class MainFrame extends JFrame {
         sudoku.setMain(this);
         over.setMain(this);
 
+        // Key Event Listener for F1 and Esc
         KeyboardFocusManager.getCurrentKeyboardFocusManager()
                 .addKeyEventDispatcher(new KeyEventDispatcher() {
                     @Override
+                    // Is called twice when key is pressed then released
                     public boolean dispatchKeyEvent(KeyEvent ke) {
-                       if(ke.getID() == KeyEvent.KEY_PRESSED){
-                        if (ke.getKeyCode() == ke.VK_ESCAPE) {
-                            System.out.println("escaped ?");
-                            //setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE); // trying to close
-                            System.exit(0);
-                        } else if (ke.getKeyCode() == ke.VK_F1) {
-                            JOptionPane.showMessageDialog(frame, "Winter Quarter\nCharly Dang 010924537"
-                                    + "\nBrandon Nguyen 011499566\nColin Koo 010291241\nFelix Zhang 01042383"
-                                    + "\nGerianna Geminiano 010662522");
-                            
+                        //So only do when key is pressed
+                        if (ke.getID() == KeyEvent.KEY_PRESSED) {
+                            // For Esc key
+                            if (ke.getKeyCode() == ke.VK_ESCAPE) {
+                                System.out.println("escaped ?");
+                                System.exit(0);
+                            } // For F1 key
+                            else if (ke.getKeyCode() == ke.VK_F1) {
+                                JOptionPane.showMessageDialog(frame, "Winter Quarter\nCharly Dang 010924537"
+                                        + "\nBrandon Nguyen 011499566\nColin Koo 010291241\nFelix Zhang 01042383"
+                                        + "\nGerianna Geminiano 010662522");
+                            }
                         }
-                       }
                         return false;
-                    
                     }
                 });
     }
